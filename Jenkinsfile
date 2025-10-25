@@ -1,15 +1,10 @@
 pipeline{
     agent any
 
-    stages{
-        stage("Restore dependencies"){
-            steps{
-                bat 'dotnet restore'
-            }
-        }
+    stages{        
         stage("Build application"){
             steps{
-                bat 'dotnet build --no-restore'
+                bat 'dotnet build' // For Windows (according to exam requirements - no separate restore stage)
             }
         }
         stage("Run unit and integration tests"){
